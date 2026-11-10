@@ -1,27 +1,23 @@
-# AI-SCHOOL-ASSISTANT-SYSTEM
+# EDUVIA AI — Real AI Edition
 
-### Your Intelligent Learning Companion
+EDUVIA AI is a student learning companion. This edition includes a Node.js/Express backend that securely calls the OpenAI Responses API. The API key is read only from the server environment and must never be placed in browser JavaScript or committed to GitHub.
 
-AI-SCHOOL-ASSISTANT-SYSTEM is an intelligent learning platform designed to help students study smarter and improve their academic performance.
+## Deploy on Render
 
-## Main Features
+Create a **Web Service** from this GitHub repository (not a Static Site).
+- Runtime: Node
+- Build Command: `npm install`
+- Start Command: `npm start`
+- Add environment variable `OPENAI_API_KEY` with your secret key in Render's Environment settings.
+- Optional: `OPENAI_MODEL` = `gpt-4.1-mini`
 
-- AI Learning Assistant
-- Interactive Quizzes
-- Student Performance Tracking
-- Personalized Study Timetable
-- Ask My Notes
-- Explain difficult subjects
-- Generate quizzes,summaries and exams
-- student account and profile
-- learning progress
-- saved conversations
-- monitor platform usage
-- manage users and permissions
-- online library
-- reasoning mode
-- manage subject and learning materials
+The server serves the frontend and `/api/chat` from the same origin. Health check: `/api/health`.
 
-## Our Mission
+## Local run
 
-To make learning easier, smarter, and more accessible for every student.
+1. Install Node.js 20 or later.
+2. Run `npm install`.
+3. Set `OPENAI_API_KEY` in your shell environment (do not commit it).
+4. Run `npm start`, then open `http://localhost:3000`.
+
+The quiz, notes and timetable features remain browser-local demo features; they are not multi-user cloud storage.

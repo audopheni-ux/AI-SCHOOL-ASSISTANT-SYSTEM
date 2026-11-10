@@ -7,13 +7,24 @@ $$(".nav-item").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
 $$("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
 $("#profileBtn").addEventListener("click",()=>toast("Profile settings are a demo preview."));
 $("#historyBtn").addEventListener("click",()=>{const h=read("eduviaHistory",[]);alert(h.length?"Saved conversation prompts:\\n\\n"+h.slice(-8).join("\\n"):"No saved conversations yet. Start a chat to save prompts.");});
-const replies=[
-"Let's break this topic into smaller steps. First, identify the key idea, then look at one example, and finally try a practice question. This is sample guidance in the EDUVIA demo.",
-"Here is a simple way to study this: 1) Read the definition. 2) Write the main points in your own words. 3) Work through an example. 4) Test yourself without looking at your notes.",
-"Good question! Start by explaining what you already understand. Then list the part that feels difficult. We can organize it into a definition, an example, and a short practice activity. This is a demonstration response."
-];
 function addMessage(text,who){const el=document.createElement("div");el.className="message "+(who==="user"?"user-msg":"assistant-msg");const b=document.createElement("b");b.textContent=who==="user"?"YOU":"EDUVIA AI";const p=document.createElement("p");p.textContent=text;el.append(b,p);$("#chatMessages").append(el);$("#chatMessages").scrollTop=$("#chatMessages").scrollHeight;}
-function sendChat(text){if(!text.trim())return;addMessage(text,"user");let h=read("eduviaHistory",[]);h.push(text);save("eduviaHistory",h);$("#chatInput").value="";setTimeout(()=>addMessage(replies[Math.floor(Math.random()*replies.length)],"assistant"),350);}
+async function sendChat(text){
+  const question=String(text||"").trim();
+  if(!question)return;
+  addMessage(question,"user");
+  let h=read("eduviaHistory",[]);h.push(question);save("eduviaHistory",h);
+  $("#chatInput").value="";
+  const sendButton=$("#chatForm button[type=submit]");
+  if(sendButton)sendButton.disabled=true;
+  const loading=document.createElement("div");loading.className="message assistant-msg";loading.innerHTML="<b>EDUVIA AI</b><p>Thinking…</p>";loading.id="aiThinking";$("#chatMessages").append(loading);
+  try{
+    const response=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:question,history:h.slice(-10)})});
+    const data=await response.json();
+    if(!response.ok)throw new Error(data.error||"The AI service could not respond.");
+    addMessage(data.reply,"assistant");
+  }catch(error){addMessage("I could not reach the AI service. Please try again in a moment. Details: "+error.message,"assistant");}
+  finally{const pending=$("#aiThinking");if(pending)pending.remove();if(sendButton)sendButton.disabled=false;}
+}
 $("#chatForm").addEventListener("submit",e=>{e.preventDefault();sendChat($("#chatInput").value)});
 $$("[data-prompt]").forEach(b=>b.addEventListener("click",()=>sendChat(b.dataset.prompt)));
 $("#clearChat").addEventListener("click",()=>{$("#chatMessages").innerHTML="";addMessage("Chat cleared. What would you like to study next?","assistant")});
