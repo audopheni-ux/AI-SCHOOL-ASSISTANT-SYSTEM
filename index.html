@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EDUVIA AI - Your Intelligent Learning Companion">
+  <title>EDUVIA AI | Intelligent Learning Companion</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">E</div><div><strong>EDUVIA <span>AI</span></strong><small>LEARN SMARTER</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav-item active" data-page="dashboard">▦ <span>Dashboard</span></button>
+    <button class="nav-item" data-page="assistant">✦ <span>AI Learning Assistant</span></button>
+    <button class="nav-item" data-page="quizzes">☷ <span>Quizzes & Exams</span></button>
+    <button class="nav-item" data-page="progress">◒ <span>My Progress</span></button>
+    <button class="nav-item" data-page="timetable">▦ <span>Study Timetable</span></button>
+    <button class="nav-item" data-page="notes">▤ <span>Ask My Notes</span></button>
+    <button class="nav-item" data-page="library">▣ <span>Online Library</span></button>
+    <div class="nav-label admin-label">MANAGEMENT</div>
+    <button class="nav-item" data-page="materials">▧ <span>Subjects & Materials</span></button>
+    <button class="nav-item" data-page="users">♙ <span>Users & Permissions</span></button>
+    <button class="nav-item" data-page="usage">▥ <span>Platform Usage</span></button>
+    <div class="sidebar-bottom"><div class="avatar">S</div><div><strong>Student Demo</strong><small>Free learner account</small></div><button id="profileBtn" title="Edit profile">⚙</button></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar"><div><span class="eyebrow">YOUR LEARNING SPACE</span><h1 id="pageTitle">Dashboard</h1></div><div class="top-actions"><span class="demo-pill">DEMO MODE</span><button class="icon-btn" id="historyBtn" title="Saved conversations">◷</button><div class="avatar small">S</div></div></header>
+    <div class="content">
+      <section class="page active" id="dashboard">
+        <div class="welcome"><div><span class="eyebrow light">TUESDAY • KEEP MOVING FORWARD</span><h2>Welcome back, Student! 👋</h2><p>Your next big achievement starts with what you learn today.</p></div><button class="primary" data-go="assistant">Ask EDUVIA AI <span>→</span></button></div>
+        <div class="stats">
+          <article class="stat-card"><span class="stat-icon purple">◒</span><small>Learning progress</small><strong id="progressStat">68%</strong><div class="mini-track"><i style="width:68%"></i></div></article>
+          <article class="stat-card"><span class="stat-icon blue">☷</span><small>Quizzes completed</small><strong id="quizStat">12</strong><small class="muted">Keep practicing</small></article>
+          <article class="stat-card"><span class="stat-icon green">◷</span><small>Study time this week</small><strong>8.5 hrs</strong><small class="muted">A steady learning habit</small></article>
+          <article class="stat-card"><span class="stat-icon orange">✦</span><small>Current average</small><strong id="averageStat">82%</strong><small class="muted">Based on demo results</small></article>
+        </div>
+        <div class="two-col">
+          <article class="panel"><div class="panel-head"><div><h3>Quick actions</h3><p>Choose what you want to work on</p></div></div><div class="quick-grid">
+            <button class="quick" data-go="assistant"><b>✦</b><strong>Ask AI Assistant</strong><small>Understand a topic</small></button>
+            <button class="quick" data-go="quizzes"><b>☷</b><strong>Take a quiz</strong><small>Test your knowledge</small></button>
+            <button class="quick" data-go="timetable"><b>▦</b><strong>Plan study time</strong><small>Build a study routine</small></button>
+            <button class="quick" data-go="notes"><b>▤</b><strong>Ask my notes</strong><small>Search your materials</small></button>
+          </div></article>
+          <article class="panel"><div class="panel-head"><div><h3>Today's learning plan</h3><p>Suggested activities</p></div><button class="text-btn" data-go="timetable">View plan</button></div><div class="task"><span class="task-dot purple-dot"></span><div><strong>Mathematics</strong><small>Algebra practice • 30 min</small></div><span class="task-time">09:00</span></div><div class="task"><span class="task-dot blue-dot"></span><div><strong>Biology</strong><small>Review cell structure • 25 min</small></div><span class="task-time">14:00</span></div><div class="task"><span class="task-dot green-dot"></span><div><strong>English</strong><small>Vocabulary revision • 20 min</small></div><span class="task-time">17:00</span></div></article>
+        </div>
+        <div class="panel mission"><div><span class="eyebrow">OUR MISSION</span><h3>Learning should be easier, smarter, and more accessible.</h3><p>EDUVIA AI brings learning support, practice, planning, and study resources together in one place.</p></div><div class="mission-icon">✦</div></div>
+      </section>
+
+      <section class="page" id="assistant"><div class="section-intro"><span class="eyebrow">YOUR STUDY PARTNER</span><h2>AI Learning Assistant</h2><p>Ask questions, explore difficult subjects, or request a study summary.</p></div>
+        <div class="chat-layout"><div class="panel chat-panel"><div class="chat-head"><div class="ai-avatar">✦</div><div><strong>EDUVIA Study Assistant</strong><small><i class="online"></i> Demo assistant • instant sample replies</small></div><button class="text-btn" id="clearChat">Clear chat</button></div><div class="chat-messages" id="chatMessages"><div class="message assistant-msg"><b>EDUVIA AI</b><p>Hello! I'm your learning companion. What subject would you like help with today?</p></div></div><div class="prompt-chips"><button data-prompt="Explain photosynthesis in simple steps">Explain photosynthesis</button><button data-prompt="Give me a summary of algebra">Summarize algebra</button><button data-prompt="Create 5 revision questions about biology">Create revision questions</button></div><form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Ask a learning question..." autocomplete="off"><button class="primary">Send ↑</button></form><small class="notice">Demo: responses are sample educational guidance, not generated by a connected AI model.</small></div><aside class="panel side-tip"><h3>Try asking</h3><p>“Explain a difficult topic using simple examples.”</p><p>“Create a revision plan for my exam.”</p><p>“Give me practice questions with answers.”</p><div class="tip-box">💡 <strong>Study tip</strong><br>Break a large topic into smaller ideas and review them regularly.</div></aside></div>
+      </section>
+
+      <section class="page" id="quizzes"><div class="section-intro"><span class="eyebrow">PRACTICE MAKES PROGRESS</span><h2>Quizzes & Exams</h2><p>Check your understanding with a short practice quiz.</p></div><div class="panel quiz-panel"><div class="quiz-top"><div><span class="eyebrow">GENERAL KNOWLEDGE</span><h3>Science Starter Quiz</h3><p>5 questions • Multiple choice</p></div><span class="quiz-tag">Practice</span></div><div id="quizArea"><div class="quiz-start"><div class="big-icon">☷</div><h3>Ready to test what you know?</h3><p>Answer five sample science questions and see your result.</p><button class="primary" id="startQuiz">Start quiz →</button></div></div></div></section>
+
+      <section class="page" id="progress"><div class="section-intro"><span class="eyebrow">YOUR ACHIEVEMENTS</span><h2>Student Performance</h2><p>Track practice results and identify areas to review.</p></div><div class="stats"><article class="stat-card"><small>Overall progress</small><strong id="progressBig">68%</strong><div class="mini-track"><i id="progressBar" style="width:68%"></i></div></article><article class="stat-card"><small>Quizzes completed</small><strong id="progressQuizzes">12</strong></article><article class="stat-card"><small>Average score</small><strong id="progressAverage">82%</strong></article></div><div class="panel"><h3>Subject review guide</h3><p class="muted">Example areas to practice. Replace these demo values with real assessment data as the system develops.</p><div class="subject-row"><span>Mathematics</span><div class="wide-track"><i style="width:72%"></i></div><b>72%</b></div><div class="subject-row"><span>Biology</span><div class="wide-track"><i style="width:85%"></i></div><b>85%</b></div><div class="subject-row"><span>English</span><div class="wide-track"><i style="width:90%"></i></div><b>90%</b></div></div></section>
+
+      <section class="page" id="timetable"><div class="section-intro"><span class="eyebrow">MAKE TIME FOR LEARNING</span><h2>Personalized Study Timetable</h2><p>Create a simple weekly study plan based on your subjects and available time.</p></div><div class="panel"><form id="planForm" class="plan-form"><label>Subject<input id="subjectInput" placeholder="e.g. Mathematics" required></label><label>Study day<select id="dayInput"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></label><label>Time<input id="timeInput" type="time" value="16:00" required></label><label>Duration<select id="durationInput"><option>20 minutes</option><option>30 minutes</option><option>45 minutes</option><option>60 minutes</option><option>90 minutes</option></select></label><button class="primary">Add to timetable +</button></form><div class="list-head"><h3>Your study sessions</h3><button class="text-btn" id="clearPlan">Clear all</button></div><div id="planList" class="plan-list"><p class="empty">No custom sessions yet. Add your first study session above.</p></div></div></section>
+
+      <section class="page" id="notes"><div class="section-intro"><span class="eyebrow">LEARN FROM YOUR MATERIALS</span><h2>Ask My Notes</h2><p>Add text notes and search for keywords or concepts in them.</p></div><div class="two-col"><div class="panel"><h3>Add learning notes</h3><label>Note title<input id="noteTitle" placeholder="e.g. Biology - Cells"></label><label>Your notes<textarea id="noteBody" rows="7" placeholder="Paste or type your learning notes here..."></textarea></label><button class="primary" id="saveNote">Save notes</button><p class="notice">Text-based demo search. PDF and AI-powered document understanding are not connected yet.</p></div><div class="panel"><h3>Search your notes</h3><input id="noteSearch" placeholder="Search a word or topic..."><div id="noteResults" class="note-results"><p class="empty">Your saved notes will appear here.</p></div></div></div></section>
+
+      <section class="page" id="library"><div class="section-intro"><span class="eyebrow">STUDY RESOURCES</span><h2>Online Library</h2><p>A sample shelf of learning resources to organize your revision.</p></div><div class="library-grid"><article class="resource"><div class="resource-art purple-art">∑</div><span class="eyebrow">MATHEMATICS</span><h3>Algebra Essentials</h3><p>Review variables, expressions, and equations.</p><button class="text-btn" data-resource="Algebra Essentials">Open resource →</button></article><article class="resource"><div class="resource-art green-art">✿</div><span class="eyebrow">BIOLOGY</span><h3>Cell Structure</h3><p>Explore cells and their main components.</p><button class="text-btn" data-resource="Cell Structure">Open resource →</button></article><article class="resource"><div class="resource-art blue-art">Aa</div><span class="eyebrow">ENGLISH</span><h3>Vocabulary Builder</h3><p>Practice useful words and definitions.</p><button class="text-btn" data-resource="Vocabulary Builder">Open resource →</button></article></div></section>
+
+      <section class="page" id="materials"><div class="section-intro"><span class="eyebrow">LEARNING CONTENT</span><h2>Subjects & Materials</h2><p>Organize subjects and sample learning materials.</p></div><div class="panel"><form id="materialForm" class="inline-form"><input id="materialInput" placeholder="Add a subject or material..." required><button class="primary">Add item</button></form><div id="materialList" class="plan-list"><div class="task"><span class="task-dot purple-dot"></span><div><strong>Mathematics</strong><small>Algebra • Geometry</small></div></div><div class="task"><span class="task-dot green-dot"></span><div><strong>Biology</strong><small>Cells • Human body</small></div></div></div></div></section>
+
+      <section class="page" id="users"><div class="section-intro"><span class="eyebrow">ACCOUNT DEMO</span><h2>Users & Permissions</h2><p>Preview of account roles. Real authentication and access control require a secure backend.</p></div><div class="panel"><div class="user-row"><div class="avatar">S</div><div><strong>Student Demo</strong><small>student@example.test</small></div><span class="role">Student</span></div><div class="user-row"><div class="avatar admin-avatar">A</div><div><strong>Platform Admin (sample)</strong><small>admin@example.test</small></div><span class="role admin-role">Administrator</span></div><p class="notice">This is illustrative only. No real user accounts, passwords, or permissions are managed in this front-end demo.</p></div></section>
+
+      <section class="page" id="usage"><div class="section-intro"><span class="eyebrow">PLATFORM OVERVIEW</span><h2>Platform Usage</h2><p>Sample usage indicators for the demonstration.</p></div><div class="stats"><article class="stat-card"><small>Sample learner accounts</small><strong>128</strong></article><article class="stat-card"><small>Practice sessions</small><strong>346</strong></article><article class="stat-card"><small>Learning resources</small><strong>42</strong></article></div><div class="panel"><h3>Demo activity</h3><div class="subject-row"><span>Assistant</span><div class="wide-track"><i style="width:80%"></i></div><b>80%</b></div><div class="subject-row"><span>Quizzes</span><div class="wide-track"><i style="width:65%"></i></div><b>65%</b></div><div class="subject-row"><span>Library</span><div class="wide-track"><i style="width:45%"></i></div><b>45%</b></div><p class="notice">Illustrative figures only, not collected from real users.</p></div></section>
+      <footer>© 2026 EDUVIA AI · Your Intelligent Learning Companion <span>Built for better learning</span></footer>
+    </div>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

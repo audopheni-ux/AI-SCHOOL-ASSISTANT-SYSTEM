@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: eduvia-ai
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
